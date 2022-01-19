@@ -7,26 +7,19 @@
 
 #include <stdio.h>
 
-int validar(int num){
-	int susp,apro, m_sus=0, m_apro=0,i=1;
-
+int validar(int num1, int num2){
+	int num;
+	int i;
 	do{
-		do{
-			printf("\nIntrodueix la nota %d: \n",i);
-			fflush(stdout);
-			scanf("%d", &num);
-			printf("El num introduit es: %d\n", num);
-			i+=1;
-		}while(num<1 || num>10);
-		if (num >4){
-				apro=apro+num;
-				m_apro=m_apro+1;
-			}else {
-				susp=susp+num;
-				m_sus=m_sus+1;
-			}
-	}while(i<16);
-	printf("Les nota mitjana dels aprobats es: %d\n", apro/m_apro);
-	printf("La nota mitjana dels suspesos es: %d\n", susp/m_sus);
+		printf("\nIntrodueix un num més gran de 10 i menor a 5000: \n");
+		fflush(stdout);
+		scanf("%d", &num);
+		printf("El num introduit es: %d\n", num);
+		i+=1;
+		if (i==3){
+			printf("Has fet massa intents!");
+		}
+	}while(i==3 && (num>num2 || num<num1));
 	return num;
+
 }

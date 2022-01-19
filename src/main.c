@@ -7,7 +7,9 @@
 #include <stdio.h>
 #include "function.h"
 
-void main(){
-	int notes=0;
-	notes = validar(notes);
+void main() {
+	int num1;
+	printf("Demanem el numero:\n");
+	num1= validar(10,5000);
+
 }
