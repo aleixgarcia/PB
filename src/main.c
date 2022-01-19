@@ -8,8 +8,6 @@
 #include "function.h"
 
 void main(){
-	int num;
-	num = validar(num);
-	binari(num);
-
+	int notes=0;
+	notes = validar(notes);
 }

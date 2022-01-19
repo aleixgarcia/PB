@@ -11,4 +11,3 @@
 #endif /* FUNCTION_H_ */
 
 int validar(int);
-void binari(int);
