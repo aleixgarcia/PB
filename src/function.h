@@ -10,4 +10,4 @@
 
 #endif /* FUNCTION_H_ */
 
-int validar(int, int);
+void intercanvi(int, int);

@@ -8,8 +8,8 @@
 #include "function.h"
 
 void main() {
-	int num1;
+	int num1, num2;
 	printf("Demanem el numero:\n");
-	num1= validar(10,5000);
+	intercanvi(num1,num2);
 
 }

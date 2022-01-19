@@ -7,19 +7,25 @@
 
 #include <stdio.h>
 
-int validar(int num1, int num2){
-	int num;
-	int i;
+void intercanvi(int num1, int num2){
+	int aux;
+
 	do{
-		printf("\nIntrodueix un num més gran de 10 i menor a 5000: \n");
+		printf("Introdueix el primer num:\n");
 		fflush(stdout);
-		scanf("%d", &num);
-		printf("El num introduit es: %d\n", num);
-		i+=1;
-		if (i==3){
-			printf("Has fet massa intents!");
-		}
-	}while(i==3 && (num>num2 || num<num1));
-	return num;
+		scanf("%d", &num1);
+	}while(num1<1);
+
+	do{
+		printf("Introdueix el segon num:\n");
+		fflush(stdout);
+		scanf("%d", &num2);
+	}while(num2<1);
+
+	aux=num1;
+	num1=num2;
+	num2=aux;
+	printf("El primer num és %d\nEl segon num es: %d\n", num2,num1);
+
 
 }
