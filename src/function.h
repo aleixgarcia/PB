@@ -10,5 +10,6 @@
 
 #endif /* FUNCTION_H_ */
 
-int validar(int);
-void resultat(int);
+int saludar_usuari();
+int saludar_usuari_participant(char *);
+void comptar_participants(int );

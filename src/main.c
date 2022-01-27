@@ -7,8 +7,11 @@
 #include <stdio.h>
 #include "function.h"
 
+
 void main() {
-	int num;
-	num=validar("Demanem un num:");
-	resultat(num);
+	struct office bcn_office;
+
+	modifyData(&bcn_office); //es passa per referència
+	printData(bcn_office); //es passa per valor
 }
+
