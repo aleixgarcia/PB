@@ -11,65 +11,36 @@
 int validate(){
 	int size;
 	do{
-		printf("Indica quants llibres vols registrar:");
+		printf("Indica la dimensió de l'array, més gran que 1 i menor que 50:\n");
 		fflush(stdout);
 		scanf("%d", &size);
-	}while(size<1);
+	}while(size<1 || size>50);
 	return size;
 }
 
-void modifyLlib(struct llibre *l, int size){
-	int i;
-	for(i=0; i<size;i++){
-		printf("Introdueix el titol del llibre %d: \n ",i+1);
+
+void Noms_array(int size){
+	int i,j,temp;
+	int array[size];
+	for(i=0;i<size;i++){
+		printf("Introdueix el numero %d:",i+1);
 		fflush(stdout);
-		scanf("%s", l[i].titol);
-
-		printf("Introdueix el nom de l'autor del llibre %d: \n",i+1);
-		fflush(stdout);
-		scanf("%s",l[i].autor);
-
-
-		printf("Introdueix el nom de la editorial %d: \n",i+1);
-		fflush(stdout);
-		scanf("%s", l[i].edit);
-
-		printf("Introdueix la data de publicació %d: \n",i+1);
-		fflush(stdout);
-		scanf("%d", &l[i].data_pub);
-
-		printf("Indica les unitats disponibles %d: \n",i+1);
-		fflush(stdout);
-		scanf("%d", &l[i].unitats_disp);
-
-		printf("Indica l'usuari que té el llibre %d: \n",i+1);
-		fflush(stdout);
-		scanf("%s", l[i].usu.usu_prestec);
-
-		printf("Indica quants dies el té de prestec %d: \n",i+1);
-		fflush(stdout);
-		scanf("%d", &l[i].usu.temps_prestec);
-
+		scanf("%d", &array[i]);
 	}
-}
 
-void printLlibre(struct llibre *ll, int size){
-	int i;
-	printf("*********************************************************\n");
+	for(i=1;i<=size-1;i++){
+		for(j=1;j<=size-1;j++){
+			if(array[j-1]<array[j]){
+				temp=array[j-1];
+				array[j-1]=array[j];
+				array[j]=temp;
+			}
+		}
+	}
+
+	printf("El resultat de l'array descendent es: \n");
 	for(i=0; i<size; i++){
-		printf("Les dades del llibre %d: ",i+1);
-		printf("Aquest es el titol del llibre %d: %s\n", i+1, ll[i].titol);
-		printf("Aquest es el nom del autor del llibre: %s\n",ll[i].autor);
-		printf("Aquesta es la editorial del llibre: %s\n", ll[i].edit);
-		printf("Aquesta es la data de publicacio del llibre: %d\n", ll[i].data_pub);
-		printf("Aquestes son les unitats disponibles del llibre: %d\n", ll[i].unitats_disp);
-		printf("Aquest es l'usuari que té el llibre: %s\n",  ll[i].usu.usu_prestec);
-		printf("Aquest/s es/son el/s dia/dies que porta el llibre: %d\n ", ll[i].usu.temps_prestec);
-		printf("*********************************************************\n");
+		printf("%d\t", array[i]);
+
 	}
 }
-
-
-
-
-

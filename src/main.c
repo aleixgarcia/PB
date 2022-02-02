@@ -10,8 +10,7 @@
 void main() {
 	int size;
 	size=validate("Demanar quantitat de llibres a registrar\n");
-	struct llibre ll[size];
-	modifyLlib(ll, size);
-	printLlibre(ll, size);
+	Noms_array(size);
+
 
 }
