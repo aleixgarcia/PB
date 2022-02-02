@@ -6,55 +6,70 @@
  */
 
 #include <stdio.h>
+#include "function.h"
 
-struct address {
-	char street[100];
-	char city[50];
-	char state[20];
-	int postalCode;
-};
-
-struct office {
-		int id;
-	char name[50];
-	char cto[50];
-	int workers;
-	struct address addr[];
-
-};
-
-struct office office[2];
-
-void modifyData(struct office *o) { //punter a office
-	int i;
-	for (i = 0; i < 2; i++) {
-		printf("Introdueix el nom de l'oficina %d: \n", i + 1);
+int validate(){
+	int size;
+	do{
+		printf("Indica quants llibres vols registrar:");
 		fflush(stdout);
-		scanf("%s", o->name);
-
-		printf("Introdueix el carrer de l'oficina %d: \n", i + 1);
-		fflush(stdout);
-		scanf("%s", o->addr[i].street);
-
-		printf("Introdueix la ciutat de l'oficina %d: \n", i + 1);
-		fflush(stdout);
-		scanf("%s", o->addr[i].city);
-
-		printf("Introdueix el codi postal de l'oficina %d: \n", i + 1);
-		fflush(stdout);
-		scanf("%d", &o->addr[i].postalCode);
-	}
-
+		scanf("%d", &size);
+	}while(size<1);
+	return size;
 }
 
-void printData(struct office o) {
+void modifyLlib(struct llibre *l, int size){
 	int i;
-	for (i = 0; i < 2; i++) {
-		printf("Aquestes són les dades de l'oficina %d: \n", i + 1);
-		printf("Nom de l'oficina %d: %s\n", i + 1, o.name);
-		printf("Carrer de l'oficina %d: %s\n", i + 1, o.addr[i].street);
-		printf("Ciutat de l'oficina %d: %s\n", i + 1, o.addr[i].city);
-		printf("Codi postal de l'oficina %d: %d\n\n", i + 1, o.addr[i].postalCode);
-	}
+	for(i=0; i<size;i++){
+		printf("Introdueix el titol del llibre %d: \n ",i+1);
+		fflush(stdout);
+		scanf("%s", l[i].titol);
 
+		printf("Introdueix el nom de l'autor del llibre %d: \n",i+1);
+		fflush(stdout);
+		scanf("%s",l[i].autor);
+
+
+		printf("Introdueix el nom de la editorial %d: \n",i+1);
+		fflush(stdout);
+		scanf("%s", l[i].edit);
+
+		printf("Introdueix la data de publicació %d: \n",i+1);
+		fflush(stdout);
+		scanf("%d", &l[i].data_pub);
+
+		printf("Indica les unitats disponibles %d: \n",i+1);
+		fflush(stdout);
+		scanf("%d", &l[i].unitats_disp);
+
+		printf("Indica l'usuari que té el llibre %d: \n",i+1);
+		fflush(stdout);
+		scanf("%s", l[i].usu.usu_prestec);
+
+		printf("Indica quants dies el té de prestec %d: \n",i+1);
+		fflush(stdout);
+		scanf("%d", &l[i].usu.temps_prestec);
+
+	}
 }
+
+void printLlibre(struct llibre *ll, int size){
+	int i;
+	printf("*********************************************************\n");
+	for(i=0; i<size; i++){
+		printf("Les dades del llibre %d: ",i+1);
+		printf("Aquest es el titol del llibre %d: %s\n", i+1, ll[i].titol);
+		printf("Aquest es el nom del autor del llibre: %s\n",ll[i].autor);
+		printf("Aquesta es la editorial del llibre: %s\n", ll[i].edit);
+		printf("Aquesta es la data de publicacio del llibre: %d\n", ll[i].data_pub);
+		printf("Aquestes son les unitats disponibles del llibre: %d\n", ll[i].unitats_disp);
+		printf("Aquest es l'usuari que té el llibre: %s\n",  ll[i].usu.usu_prestec);
+		printf("Aquest/s es/son el/s dia/dies que porta el llibre: %d\n ", ll[i].usu.temps_prestec);
+		printf("*********************************************************\n");
+	}
+}
+
+
+
+
+

@@ -7,11 +7,11 @@
 #include <stdio.h>
 #include "function.h"
 
-
 void main() {
-	struct office bcn_office;
+	int size;
+	size=validate("Demanar quantitat de llibres a registrar\n");
+	struct llibre ll[size];
+	modifyLlib(ll, size);
+	printLlibre(ll, size);
 
-	modifyData(&bcn_office); //es passa per referència
-	printData(bcn_office); //es passa per valor
 }
-

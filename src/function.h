@@ -10,6 +10,20 @@
 
 #endif /* FUNCTION_H_ */
 
-int saludar_usuari();
-int saludar_usuari_participant(char *);
-void comptar_participants(int );
+struct usuari{
+	char usu_prestec[20];
+	int temps_prestec;
+};
+
+struct llibre{
+	char titol[50];
+	char autor[20];
+	char edit[20];
+	int data_pub;
+	int unitats_disp;
+	struct usuari usu;
+};
+
+int validate();
+void modifyLlib(struct llibre *, int);
+void printLlibre(struct llibre *, int);
