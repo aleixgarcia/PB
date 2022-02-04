@@ -1,0 +1,42 @@
+*********************************Codi ben executat i realitzat********************************
+*******************************main.c***********************************
+#include <stdio.h>
+#include "functions.h"
+
+void main(){
+	int num1=2,num2=3;
+	num1 = validate();
+	num2 = validate();
+	printf("\nnum1:%d\nnum2:%d",num1,num2);
+	change(num1,num2);
+
+}
+
+**********************functions.h**************************************
+#ifndef FUNCTIONS_H_
+#define FUNCTIONS_H_
+
+ int validate();
+ int change(int,int);
+
+#endif /* FUNCTIONS_H_ */
+
+**********************functions.h**************************************
+#include <stdio.h>
+#include "functions.h"
+int validate(){
+	int num;
+	do{
+		printf("Introdueix un valor:\n=>");
+		scanf("%d",&num);
+	}while(num<1);
+	return num;
+}
+
+int change(int a, int b){
+		int aux;
+		aux=b;
+		b=a;
+		a=aux;
+		printf("\nnum1:%d\nnum2:%d",a,b);
+}
