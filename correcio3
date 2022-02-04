@@ -1,0 +1,47 @@
+********************************************codi ben corregit i realitzat**********************************************
+*******************************main.c***********************************
+#include <stdio.h>
+#include "functions.h"
+
+void main(){
+    int segundos;
+    printf("Introduce los segundos: ");
+    scanf("%d", &segundos);
+    if (segundos < 0){
+        printf("\nError, Debe indicar un número positivo");
+        printf("\nIntroduzca los segundos de nuevo: ");
+        scanf("%d", &segundos);
+    }
+    conversion(segundos);
+}
+
+**********************functions.h**************************************
+#ifndef FUNCTIONS_H_
+#define FUNCTIONS_H_
+#endif /* FUNCTIONS_H_ */
+
+#define MAX 60
+int conversion(int);
+
+**********************functions.h**************************************
+#include <stdio.h>
+#include "functions.h"
+
+int conversion(int segundos){
+    int dias = 0;
+    int horas = 0;
+    int minutos = 0;
+    if (segundos > 59){
+        minutos = segundos / MAX;
+        segundos = segundos % MAX;
+        if (minutos > 59){
+            horas = minutos / MAX;
+            minutos = minutos % MAX;
+            if (horas > 23){
+                dias = horas / 24; 
+                horas = horas % 24;
+            }
+        }
+    }
+    printf("El número de segundos se corresponde con %d dias, %d horas, %d minutos y %d segundos", dias, horas, minutos, segundos);
+}
