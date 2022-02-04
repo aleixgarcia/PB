@@ -10,6 +10,7 @@
 
 #endif /* FUNCTION_H_ */
 
-
-int validate();
-void Noms_array(int);
+int demanarr();
+int demanarnom(int *);
+int validarDim(int);
+int validarNot(int);

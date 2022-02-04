@@ -8,39 +8,75 @@
 #include <stdio.h>
 #include "function.h"
 
-int validate(){
-	int size;
-	do{
-		printf("Indica la dimensió de l'array, més gran que 1 i menor que 50:\n");
-		fflush(stdout);
-		scanf("%d", &size);
-	}while(size<1 || size>50);
-	return size;
+#include <stdio.h>
+
+int demanarr() {
+	int numDim;
+	numDim = validarDim("Validem el num");
+	//printf("La dimensio es de: %d\n", numDim);
+	validarNot(numDim);
+	return numDim;
 }
 
-
-void Noms_array(int size){
-	int i,j,temp;
-	int array[size];
-	for(i=0;i<size;i++){
-		printf("Introdueix el numero %d:",i+1);
+int validarDim(int numDim) {
+	do {
+		printf("Introdueix la dimensio major a 1 i menor a 50:\n");
 		fflush(stdout);
-		scanf("%d", &array[i]);
-	}
+		scanf("%d", &numDim);
+	} while (numDim < 1 || numDim > 50);
+	return numDim;
+}
 
-	for(i=1;i<=size-1;i++){
-		for(j=1;j<=size-1;j++){
-			if(array[j-1]<array[j]){
-				temp=array[j-1];
-				array[j-1]=array[j];
-				array[j]=temp;
+int validarNot(int numDim) {
+	int i, j, aux, alta, baixa, mitj = 0;
+	int nota;
+	int arr[numDim];
+	for (i = 0; i < numDim; i++) {
+		nota = demanarnom(nota);
+		//printf("La nota es: %d\n", nota);
+		arr[i] = nota;
+		mitj = mitj + nota;
+		if (nota > alta) {
+			alta = nota;
+		} else {
+			baixa = nota;
+		}
+
+	}
+	printf("La nota mes alta és: %d\n\n", alta);
+	printf("La nota mes baixa és: %d\n\n", baixa);
+	printf("La nota mitjana de totes les notes és: %d\n\n", mitj / numDim);
+
+	for (i = 0; i < numDim - 1; i++) {
+			for (j = i + 1; j < numDim; j++) {
+				if (arr[i] > arr[j]) {
+					aux = arr[i];
+					arr[i] = arr[j];
+					arr[j] = aux;
+				}
 			}
 		}
-	}
 
-	printf("El resultat de l'array descendent es: \n");
-	for(i=0; i<size; i++){
-		printf("%d\t", array[i]);
+		printf("L'array ordenat és: \n");
+		for (i = 0; i < numDim; i++) {
+			if (i != numDim - 1) {
+				printf("%d, ", arr[i]);
+			} else {
+				printf("%d.", arr[i]);
+			}
+		}
 
-	}
+	return nota;
+
+}
+
+int demanarnom(int *nota) {
+	//printf("La nota abans de demanarla %d: \n", nota);
+	do {
+		printf("Introdueix la nota major a 1 i menor a 10 :\n");
+		fflush(stdout);
+		scanf("%d", &nota);
+		//printf("La nota en demanarnom: %d\n", nota);
+	} while (nota < 1 || nota > 10);
+	return nota;
 }
