@@ -8,9 +8,5 @@
 #include "function.h"
 
 void main() {
-	int size;
-	size=validate("Demanar quantitat de llibres a registrar\n");
-	Noms_array(size);
-
-
+	demanarr("Demanar la dimensio de l'array\n");
 }
